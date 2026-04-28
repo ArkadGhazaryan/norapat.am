@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { products } from "@/data/products";
 
 const CartContext = createContext(null);
 
@@ -20,13 +19,7 @@ export function CartProvider({ children }) {
   }, [items]);
 
   const detailedItems = useMemo(
-    () =>
-      items
-        .map((item) => {
-          const product = products.find((entry) => entry.id === item.id);
-          return product ? { ...product, quantity: item.quantity } : null;
-        })
-        .filter(Boolean),
+    () => items.filter(Boolean),
     [items]
   );
 
@@ -37,17 +30,17 @@ export function CartProvider({ children }) {
 
   const count = detailedItems.reduce((sum, item) => sum + item.quantity, 0);
 
-  function addItem(productId) {
+  function addItem(product) {
     setItems((current) => {
-      const existing = current.find((item) => item.id === productId);
+      const existing = current.find((item) => item.id === product.id);
       if (existing) {
         return current.map((item) =>
-          item.id === productId
+          item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-      return [...current, { id: productId, quantity: 1 }];
+      return [...current, { ...product, quantity: 1 }];
     });
   }
 

@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { categories, products } from "@/data/products";
+import { getCategories, getProducts } from "@/lib/products";
 import { ProductCard } from "@/components/shop/ProductCard";
 
-export default function Home() {
-  const popular = products.filter((product) => product.popular).slice(0, 4);
+export default async function Home() {
+  const categories = getCategories();
+  const popular = getProducts({ sort: "popular" }).slice(0, 4);
 
   return (
     <main>
@@ -35,7 +36,7 @@ export default function Home() {
         </div>
         <div className="category-grid">
           {categories.map((category) => (
-            <Link key={category.id} href={`/shop?category=${category.id}`}>
+            <Link key={category.id} href={`/shop?category=${category.slug}`}>
               {category.name}
             </Link>
           ))}

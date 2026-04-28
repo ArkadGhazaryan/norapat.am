@@ -41,7 +41,7 @@ Norapat.am - это e-commerce приложение для Foodcourt, в кот�
 
 ### Database
 
-Рекомендуется использовать PostgreSQL.
+Для production рекомендуется использовать PostgreSQL. Для текущего local MVP уже подключен SQLite database через built-in Node.js `node:sqlite`, чтобы сайт работал без внешнего database account.
 
 Причины:
 
@@ -51,9 +51,16 @@ Norapat.am - это e-commerce приложение для Foodcourt, в кот�
 - хорошо работает с Prisma ORM
 - можно хостить на Supabase, Neon, Railway или Render
 
-Рекомендуемый ORM:
+Production ORM option:
 
-- Prisma ORM
+- Prisma ORM или прямые SQL queries, если project останется простым
+
+Текущий local development database:
+
+- SQLite file `database/norapat.db`
+- init command `npm.cmd run db:init`
+- server helpers `lib/db.js`, `lib/products.js`, `lib/orders.js`
+- API route `app/api/orders/route.js`
 
 Рекомендуемый database provider для development:
 

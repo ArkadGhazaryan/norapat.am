@@ -2,11 +2,11 @@
 
 import { useCart } from "@/components/cart/CartProvider";
 
-export function AddToCartButton({ productId, label = "В корзину" }) {
+export function AddToCartButton({ product, label = "В корзину" }) {
   const { addItem } = useCart();
 
   return (
-    <button className="primary-button" type="button" onClick={() => addItem(productId)}>
+    <button className="primary-button" type="button" onClick={() => addItem(product)}>
       {label}
     </button>
   );

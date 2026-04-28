@@ -293,6 +293,20 @@ h3 {
   padding: 10px 12px;
 }
 
+.primary-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.form-error {
+  background: #f6d9d6;
+  border-radius: 8px;
+  color: #8d241d;
+  font-weight: 700;
+  margin: 0;
+  padding: 12px;
+}
+
 .product-grid {
   display: grid;
   gap: 18px;

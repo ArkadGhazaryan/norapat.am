@@ -2,119 +2,71 @@
 
 ## Общий статус проекта
 
-Общий progress реализации проекта на данный момент: `8%`.
+Общий progress реализации проекта на данный момент: `58%`.
 
-Проект сейчас является technical starter: Next.js установлен, базовая структура есть, но database, authentication, catalog, checkout, admin panel и analytics еще не реализованы.
+Сайт уже работает как MVP: есть home page, shop, product detail, cart, checkout, server API, local SQLite database, admin dashboard, account draft и static/legal pages. Real authentication, full admin CRUD, online payment и image upload еще не подключены.
 
 ## Общая статистика по epic-ам
 
 | Epic | Progress | Tasks done | Status |
 | --- | ---: | ---: | --- |
-| EPIC 01 - Project setup | 80% | 6 / 9 | Partly done |
-| EPIC 02 - Basic UI starter | 20% | 4 / 10 | Starter only |
+| EPIC 01 - Project setup | 90% | 8 / 9 | Mostly done |
+| EPIC 02 - Basic UI and layout | 80% | 8 / 10 | MVP done |
 | EPIC 03 - Requirements document | 70% | 2 / 7 | Draft exists |
 | EPIC 04 - Architecture document | 100% | 8 / 8 | Done |
-| EPIC 05 - Database | 0% | 0 / 11 | Not started |
-| EPIC 06 - Authentication | 0% | 0 / 10 | Not started |
-| EPIC 07 - Public shop | 0% | 0 / 11 | Not started |
-| EPIC 08 - Cart | 0% | 0 / 8 | Not started |
-| EPIC 09 - Checkout | 0% | 0 / 10 | Not started |
-| EPIC 10 - Customer profile | 0% | 0 / 8 | Not started |
-| EPIC 11 - Admin panel | 0% | 0 / 12 | Not started |
-| EPIC 12 - Analytics | 0% | 0 / 9 | Not started |
-| EPIC 13 - Static/legal pages | 0% | 0 / 9 | Not started |
-| EPIC 14 - Testing and deployment | 0% | 0 / 9 | Not started |
+| EPIC 05 - Database | 65% | 7 / 11 | Local SQLite done |
+| EPIC 06 - Authentication | 5% | 1 / 10 | Placeholder only |
+| EPIC 07 - Public shop | 85% | 9 / 11 | MVP done |
+| EPIC 08 - Cart | 85% | 7 / 8 | LocalStorage MVP |
+| EPIC 09 - Checkout | 85% | 8 / 10 | Server order MVP |
+| EPIC 10 - Customer profile | 25% | 2 / 8 | Draft page |
+| EPIC 11 - Admin panel | 55% | 6 / 12 | DB dashboard MVP |
+| EPIC 12 - Analytics | 50% | 4 / 9 | Basic DB analytics |
+| EPIC 13 - Static/legal pages | 80% | 7 / 9 | Draft pages |
+| EPIC 14 - Testing and deployment | 45% | 4 / 9 | Build passed |
 
-## EPIC 01 - Project setup | Epic progress: 80% | Tasks: 6 / 9 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 9 |
-| Done | 6 |
-| Partial | 0 |
-| Not started | 3 |
-| Epic progress | 80% |
-
-### Tasks
+## EPIC 01 - Project setup | Epic progress: 90% | Tasks: 8 / 9 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
 | Создать `package.json` | 100% | Done | Файл существует |
-| Установить Next.js | 100% | Done | Next.js `16.2.4` установлен |
-| Установить React | 100% | Done | React `19.2.5` установлен |
+| Установить Next.js | 100% | Done | Next.js `16.2.4` |
+| Установить React | 100% | Done | React `19.2.5` |
 | Создать `next.config.mjs` | 100% | Done | Файл существует |
 | Создать `package-lock.json` | 100% | Done | Файл существует |
-| Создать `app/` structure | 100% | Done | Есть `page.js`, `layout.js`, `globals.css` |
-| Настроить production env config | 0% | Not started | Нужен `.env.example` и production env plan |
-| Добавить lint/test scripts | 0% | Not started | Сейчас есть только dev/build/start |
-| Добавить formatting setup | 0% | Not started | Prettier/ESLint config еще нет |
+| Создать `app/` structure | 100% | Done | Routes добавлены |
+| Добавить `jsconfig.json` | 100% | Done | `@/` imports работают |
+| Добавить `.env.example` | 100% | Done | Basic env keys добавлены |
+| Добавить lint/test scripts | 0% | Not started | Пока есть только build verification |
 
-## EPIC 02 - Basic UI starter | Epic progress: 20% | Tasks: 4 / 10 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 10 |
-| Done | 4 |
-| Partial | 0 |
-| Not started | 6 |
-| Epic progress | 20% |
-
-### Tasks
+## EPIC 02 - Basic UI and layout | Epic progress: 80% | Tasks: 8 / 10 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Создать starter home page | 100% | Done | Есть `app/page.js` |
-| Показать planned modules на home page | 100% | Done | Public shop, accounts, checkout, admin, analytics |
-| Добавить basic global styling | 100% | Done | Есть `app/globals.css` |
-| Добавить metadata | 100% | Done | Есть `app/layout.js` |
-| Сделать real header | 0% | Not started | Header еще не создан |
-| Сделать real footer | 0% | Not started | Footer еще не создан |
-| Сделать navigation | 0% | Not started | Нет menu links |
-| Сделать responsive shop layout | 0% | Not started | Только starter layout |
-| Сделать brand-based visual system | 0% | Not started | Нужны final colors/typography |
-| Добавить Armenian/Russian content | 0% | Not started | Сейчас starter text на английском |
+| Создать global layout | 100% | Done | `app/layout.js` обновлен |
+| Создать header | 100% | Done | `components/layout/Header.js` |
+| Создать footer | 100% | Done | `components/layout/Footer.js` |
+| Сделать navigation | 100% | Done | Home/shop/account/admin/cart |
+| Сделать home page | 100% | Done | Hero, categories, popular products |
+| Добавить responsive styles | 90% | Done | Mobile grid/layout rules есть |
+| Добавить product visuals | 100% | Done | Product images используются |
+| Добавить reusable buttons/cards | 80% | Done | ProductCard/AddToCartButton |
+| Финальный brand design | 40% | Partial | MVP style есть, brand нужно уточнить |
+| Финальный Armenian/Russian content | 40% | Partial | Сейчас основной UI на русском |
 
 ## EPIC 03 - Requirements document | Epic progress: 70% | Tasks: 2 / 7 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 7 |
-| Done | 2 |
-| Partial | 0 |
-| Not started | 5 |
-| Epic progress | 70% |
-
-### Tasks
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
 | Создать requirements document | 100% | Done | Есть `Shop - Norapat - code.md` |
-| Описать основные modules | 100% | Done | Home, shop, product, checkout, profile, admin, analytics |
+| Описать основные modules | 100% | Done | Home/shop/product/checkout/profile/admin |
 | Подтвердить final database schema | 0% | Not started | Нужно business confirmation |
-| Выбрать payment provider | 0% | Not started | Idram/ArCa/bank gateway еще не выбран |
-| Описать delivery rules | 0% | Not started | Нужны районы, цены, сроки |
+| Выбрать payment provider | 0% | Not started | Idram/ArCa/bank не выбран |
+| Описать delivery rules | 20% | Partial | В MVP фиксированная доставка 700 AMD |
 | Уточнить exact design requirements | 0% | Not started | Нужны brand references |
-| Добавить real product/category data | 0% | Not started | Нет реального каталога |
+| Добавить real product/category data | 20% | Partial | Есть sample data |
 
 ## EPIC 04 - Architecture document | Epic progress: 100% | Tasks: 8 / 8 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 8 |
-| Done | 8 |
-| Partial | 0 |
-| Not started | 0 |
-| Epic progress | 100% |
-
-### Tasks
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
@@ -124,288 +76,180 @@
 | Описать recommended stack | 100% | Done | Frontend/backend/tools |
 | Описать database choice | 100% | Done | PostgreSQL + Prisma |
 | Описать schema proposal | 100% | Done | User/Product/Order/etc. |
-| Описать file structure | 100% | Done | Есть recommended tree |
+| Описать file structure | 100% | Done | Recommended tree |
 | Описать implementation phases | 100% | Done | Phase 1-9 |
 
-## EPIC 05 - Database | Epic progress: 0% | Tasks: 0 / 11 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 11 |
-| Done | 0 |
-| Partial | 0 |
-| Not started | 11 |
-| Epic progress | 0% |
-
-### Tasks
+## EPIC 05 - Database | Epic progress: 65% | Tasks: 7 / 11 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Выбрать database provider | 0% | Not started | Supabase, Neon или local PostgreSQL |
-| Установить Prisma | 0% | Not started | Dependency еще не добавлен |
-| Установить PostgreSQL client | 0% | Not started | Например `@prisma/client` |
-| Создать `prisma/schema.prisma` | 0% | Not started | Schema еще нет |
-| Создать User model | 0% | Not started | Для customer/admin |
-| Создать Product/Category models | 0% | Not started | Для catalog |
-| Создать Order/OrderItem models | 0% | Not started | Для checkout |
-| Создать PromoCode model | 0% | Not started | Для discounts |
-| Запустить initial migration | 0% | Not started | Migration еще нет |
-| Создать seed script | 0% | Not started | Для categories/products |
-| Создать `lib/db.js` | 0% | Not started | Database access layer еще нет |
+| Создать local SQLite database | 100% | Done | `database/norapat.db` создается через script |
+| Создать database init script | 100% | Done | `scripts/init-db.js` |
+| Создать server DB helper | 100% | Done | `lib/db.js` |
+| Создать Product/Category tables | 100% | Done | SQLite tables |
+| Создать Order/OrderItem tables | 100% | Done | SQLite tables |
+| Seed categories/products | 100% | Done | 5 categories, 8 products |
+| Создать products query layer | 100% | Done | `lib/products.js` |
+| Создать PromoCode model | 0% | Not started | Нет |
+| Создать User model | 0% | Not started | Нет |
+| Подключить production PostgreSQL | 0% | Not started | Supabase/Neon позже |
+| Добавить migration workflow | 0% | Not started | Сейчас init script, не migration system |
 
-## EPIC 06 - Authentication | Epic progress: 0% | Tasks: 0 / 10 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 10 |
-| Done | 0 |
-| Partial | 0 |
-| Not started | 10 |
-| Epic progress | 0% |
-
-### Tasks
+## EPIC 06 - Authentication | Epic progress: 5% | Tasks: 1 / 10 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
+| Создать account placeholder | 100% | Done | `/account` page есть |
 | Выбрать auth solution | 0% | Not started | Auth.js/NextAuth recommended |
-| Установить auth dependencies | 0% | Not started | Еще не установлены |
-| Настроить user model | 0% | Not started | Нужен User в database |
-| Добавить password hashing | 0% | Not started | Например bcrypt |
-| Создать registration flow | 0% | Not started | UI/API нет |
-| Создать login flow | 0% | Not started | UI/API нет |
+| Установить auth dependencies | 0% | Not started | Нет |
+| Настроить user model | 0% | Not started | Database нет |
+| Добавить password hashing | 0% | Not started | Нет |
+| Создать registration flow | 0% | Not started | Нет |
+| Создать login flow | 0% | Not started | Нет |
 | Создать logout flow | 0% | Not started | Нет |
-| Создать customer session | 0% | Not started | Нет session config |
-| Защитить account pages | 0% | Not started | Middleware/guards нет |
-| Защитить admin pages по role | 0% | Not started | Role-based access нет |
+| Защитить account pages | 0% | Not started | Нет |
+| Защитить admin pages по role | 0% | Not started | Нет |
 
-## EPIC 07 - Public shop | Epic progress: 0% | Tasks: 0 / 11 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 11 |
-| Done | 0 |
-| Partial | 0 |
-| Not started | 11 |
-| Epic progress | 0% |
-
-### Tasks
+## EPIC 07 - Public shop | Epic progress: 85% | Tasks: 9 / 11 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Создать `/shop` page | 0% | Not started | Route еще нет |
-| Создать `/product/[slug]` page | 0% | Not started | Route еще нет |
-| Создать product card component | 0% | Not started | Component еще нет |
-| Создать product grid | 0% | Not started | Нет catalog UI |
-| Подключить products из database | 0% | Not started | Database еще нет |
-| Добавить category filter | 0% | Not started | Нет filters |
-| Добавить price filter | 0% | Not started | Нет filters |
-| Добавить availability filter | 0% | Not started | Нет filters |
-| Добавить sorting by price | 0% | Not started | Нет sorting |
-| Добавить sorting by newest/popular | 0% | Not started | Нет sorting |
-| Добавить search | 0% | Not started | Нет search |
+| Создать `/shop` page | 100% | Done | Route работает |
+| Создать `/product/[slug]` page | 100% | Done | SSG pages работают |
+| Создать product card component | 100% | Done | `ProductCard` |
+| Создать product grid | 100% | Done | Grid есть |
+| Подключить products | 80% | Done | Mock data вместо database |
+| Добавить category filter | 100% | Done | Query filter |
+| Добавить search | 100% | Done | Query search |
+| Добавить sorting by price | 100% | Done | ASC/DESC |
+| Добавить sorting by newest/popular | 100% | Done | Query sort |
+| Добавить stock filter | 0% | Not started | Нужно добавить availability filter |
+| Добавить pagination/infinite load | 0% | Not started | Пока все товары сразу |
 
-## EPIC 08 - Cart | Epic progress: 0% | Tasks: 0 / 8 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 8 |
-| Done | 0 |
-| Partial | 0 |
-| Not started | 8 |
-| Epic progress | 0% |
-
-### Tasks
+## EPIC 08 - Cart | Epic progress: 85% | Tasks: 7 / 8 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Выбрать cart storage strategy | 0% | Not started | Client/localStorage или server cart |
-| Создать cart state | 0% | Not started | State еще нет |
-| Добавить add to cart | 0% | Not started | Нет action |
-| Добавить remove from cart | 0% | Not started | Нет action |
-| Добавить quantity update | 0% | Not started | Нет action |
-| Создать cart page | 0% | Not started | `/cart` route нет |
-| Показать subtotal/total | 0% | Not started | Нет calculations |
+| Создать cart provider | 100% | Done | `CartProvider` |
+| Сохранять cart в localStorage | 100% | Done | `norapat-cart` |
+| Добавить add to cart | 100% | Done | Button работает |
+| Добавить remove from cart | 100% | Done | Cart page |
+| Добавить quantity update | 100% | Done | +/- buttons |
+| Создать `/cart` page | 100% | Done | Route работает |
+| Показать subtotal/total | 100% | Done | Delivery + total |
 | Добавить promo code apply | 0% | Not started | Нет promo logic |
 
-## EPIC 09 - Checkout | Epic progress: 0% | Tasks: 0 / 10 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 10 |
-| Done | 0 |
-| Partial | 0 |
-| Not started | 10 |
-| Epic progress | 0% |
-
-### Tasks
+## EPIC 09 - Checkout | Epic progress: 85% | Tasks: 8 / 10 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Создать `/checkout` page | 0% | Not started | Route еще нет |
-| Создать checkout form | 0% | Not started | Нет customer/delivery fields |
-| Добавить form validation | 0% | Not started | Zod еще не добавлен |
-| Проверять cart server-side | 0% | Not started | Нет server validation |
-| Создать order API/server action | 0% | Not started | Нет endpoint/action |
-| Сохранять order в database | 0% | Not started | Database еще нет |
-| Сохранять order items | 0% | Not started | Database еще нет |
-| Добавить cash payment | 0% | Not started | Нет payment method |
-| Выбрать online payment provider | 0% | Not started | Provider не выбран |
-| Добавить order confirmation | 0% | Not started | Нет confirmation page/state |
+| Создать `/checkout` page | 100% | Done | Route работает |
+| Создать checkout form | 100% | Done | Name/phone/address/payment |
+| Добавить required validation | 70% | Done | HTML required fields |
+| Создать server order API | 100% | Done | `/api/orders` |
+| Сохранять order в database | 100% | Done | SQLite `orders` |
+| Сохранять order items | 100% | Done | SQLite `order_items` |
+| Добавить cash payment | 100% | Done | Cash selected |
+| Добавить order confirmation | 100% | Done | Shows order number |
+| Проверять cart server-side | 80% | Done | API пересчитывает цены по database |
+| Online payment provider | 0% | Not started | Не выбран |
+| Email/SMS notification | 0% | Not started | Нет |
 
-## EPIC 10 - Customer profile | Epic progress: 0% | Tasks: 0 / 8 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 8 |
-| Done | 0 |
-| Partial | 0 |
-| Not started | 8 |
-| Epic progress | 0% |
-
-### Tasks
+## EPIC 10 - Customer profile | Epic progress: 25% | Tasks: 2 / 8 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Создать `/account` page | 0% | Not started | Route еще нет |
-| Создать `/account/orders` page | 0% | Not started | Route еще нет |
-| Показать profile data | 0% | Not started | Auth/database нет |
-| Добавить profile edit | 0% | Not started | Form нет |
-| Добавить saved addresses | 0% | Not started | Address model/UI нет |
-| Добавить order history | 0% | Not started | Orders нет |
-| Добавить order detail | 0% | Not started | Нет page |
-| Добавить wishlist | 0% | Not started | Wishlist model/UI нет |
+| Создать `/account` page | 100% | Done | Route есть |
+| Показать profile/account placeholder | 100% | Done | Draft page |
+| Создать `/account/orders` page | 0% | Not started | Нет |
+| Показать real profile data | 0% | Not started | Auth/database нет |
+| Добавить profile edit | 0% | Not started | Нет |
+| Добавить saved addresses | 0% | Not started | Нет |
+| Добавить order history | 0% | Not started | Нет |
+| Добавить wishlist | 0% | Not started | Нет |
 
-## EPIC 11 - Admin panel | Epic progress: 0% | Tasks: 0 / 12 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 12 |
-| Done | 0 |
-| Partial | 0 |
-| Not started | 12 |
-| Epic progress | 0% |
-
-### Tasks
+## EPIC 11 - Admin panel | Epic progress: 55% | Tasks: 6 / 12 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Создать `/admin` route | 0% | Not started | Route еще нет |
-| Защитить admin route | 0% | Not started | Auth/role guard нет |
-| Создать admin dashboard layout | 0% | Not started | Layout нет |
-| Создать products list | 0% | Not started | UI/API нет |
-| Создать product create/edit/delete | 0% | Not started | CRUD нет |
-| Добавить product image upload | 0% | Not started | Upload provider не выбран |
-| Создать categories CRUD | 0% | Not started | CRUD нет |
-| Создать orders list | 0% | Not started | UI/API нет |
-| Создать order detail | 0% | Not started | UI/API нет |
-| Добавить order status update | 0% | Not started | Status workflow нет |
-| Создать promo code management | 0% | Not started | UI/API нет |
-| Создать customer list | 0% | Not started | UI/API нет |
+| Создать `/admin` route | 100% | Done | Route работает |
+| Создать dashboard UI | 100% | Done | Stats/cards/orders/products |
+| Показать products list | 100% | Done | Products from database |
+| Показать database orders | 100% | Done | Orders from SQLite |
+| Показать basic revenue stats | 100% | Done | Revenue/average check from DB |
+| Создать orders API | 100% | Done | GET/POST `/api/orders` |
+| Защитить admin route | 0% | Not started | Auth нет |
+| Product create/edit/delete | 0% | Not started | CRUD нет |
+| Product image upload | 0% | Not started | Upload provider нет |
+| Categories CRUD | 0% | Not started | Нет |
+| Order status update | 0% | Not started | Нет |
+| Promo code management | 0% | Not started | Нет |
+| Customer list | 0% | Not started | Нет |
 
-## EPIC 12 - Analytics | Epic progress: 0% | Tasks: 0 / 9 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 9 |
-| Done | 0 |
-| Partial | 0 |
-| Not started | 9 |
-| Epic progress | 0% |
-
-### Tasks
+## EPIC 12 - Analytics | Epic progress: 50% | Tasks: 4 / 9 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Создать admin analytics page | 0% | Not started | Route/UI нет |
-| Считать total orders | 0% | Not started | Query нет |
-| Считать total revenue | 0% | Not started | Query нет |
-| Считать average order value | 0% | Not started | Query нет |
-| Показать orders by status | 0% | Not started | Query/UI нет |
-| Добавить today/week/month filters | 0% | Not started | Date filters нет |
-| Показать top 5 best-selling products | 0% | Not started | Query/UI нет |
-| Показать least-selling products | 0% | Not started | Query/UI нет |
-| Показать customer analytics | 0% | Not started | New/repeat/top customers нет |
+| Создать analytics area в admin | 100% | Done | Stats cards |
+| Считать total orders | 100% | Done | Database orders |
+| Считать total revenue | 100% | Done | Database orders |
+| Считать average order value | 100% | Done | Database orders |
+| Orders by status | 0% | Not started | Нет chart/table |
+| Today/week/month filters | 0% | Not started | Нет date filters |
+| Top 5 products | 0% | Not started | Нет query |
+| Least-selling products | 0% | Not started | Нет query |
+| Customer analytics | 0% | Not started | Auth/database нет |
 
-## EPIC 13 - Static/legal pages | Epic progress: 0% | Tasks: 0 / 9 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 9 |
-| Done | 0 |
-| Partial | 0 |
-| Not started | 9 |
-| Epic progress | 0% |
-
-### Tasks
+## EPIC 13 - Static/legal pages | Epic progress: 80% | Tasks: 7 / 9 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Создать About page | 0% | Not started | Route нет |
-| Создать Contact page | 0% | Not started | Route нет |
-| Создать Privacy Policy | 0% | Not started | Route/text нет |
-| Создать Terms and Conditions | 0% | Not started | Route/text нет |
-| Создать Refund Policy | 0% | Not started | Route/text нет |
-| Создать Delivery Policy | 0% | Not started | Route/text нет |
-| Добавить footer links | 0% | Not started | Footer нет |
-| Добавить contact information | 0% | Not started | Business data нет |
-| Проверить legal text | 0% | Not started | Нужно business/legal approval |
+| Создать About page | 100% | Done | `/about` |
+| Создать Contact page | 100% | Done | `/contact` |
+| Создать Privacy Policy | 100% | Done | Draft page |
+| Создать Terms and Conditions | 100% | Done | Draft page |
+| Создать Refund Policy | 100% | Done | Draft page |
+| Создать Delivery Policy | 100% | Done | Draft page |
+| Добавить footer links | 100% | Done | Footer links есть |
+| Добавить real contact information | 20% | Partial | Placeholder phone/email |
+| Проверить legal text | 0% | Not started | Нужен final business/legal approval |
 
-## EPIC 14 - Testing and deployment | Epic progress: 0% | Tasks: 0 / 9 done
-
-### Epic statistics
-
-| Metric | Value |
-| --- | ---: |
-| Total tasks | 9 |
-| Done | 0 |
-| Partial | 0 |
-| Not started | 9 |
-| Epic progress | 0% |
-
-### Tasks
+## EPIC 14 - Testing and deployment | Epic progress: 45% | Tasks: 4 / 9 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Добавить lint script | 0% | Not started | Script нет |
-| Добавить test setup | 0% | Not started | Tests нет |
-| Проверить production build | 0% | Not started | Build нужно запустить после изменений |
-| Проверить checkout flow | 0% | Not started | Checkout еще нет |
-| Проверить admin permissions | 0% | Not started | Admin/auth еще нет |
-| Проверить responsive UI | 0% | Not started | Full UI еще нет |
-| Настроить Vercel deploy | 0% | Not started | Deployment нет |
-| Настроить production database | 0% | Not started | Database нет |
-| Настроить env variables | 0% | Not started | `.env.example` нет |
+| Проверить production build | 100% | Done | `npm.cmd run build` passed |
+| Проверить generated routes | 100% | Done | 22 routes generated |
+| Исправить import alias | 100% | Done | `jsconfig.json` added |
+| Создать database init command | 100% | Done | `npm.cmd run db:init` |
+| Добавить lint script | 0% | Not started | Нет |
+| Добавить test setup | 0% | Not started | Нет |
+| Проверить checkout flow вручную | 0% | Not started | Нужно browser QA |
+| Проверить responsive UI вручную | 0% | Not started | Нужно browser QA |
+| Настроить Vercel deploy | 0% | Not started | Нет |
+| Настроить production database/env | 0% | Not started | Нет |
 
-## Next recommended tasks
+## Что работает сейчас
 
-1. Выбрать database provider: Supabase, Neon или local PostgreSQL.
-2. Установить Prisma и создать database schema.
-3. Добавить `.env.example`.
-4. Seed categories и products.
-5. Сделать public layout: header, footer, navigation.
-6. Сделать shop page и product detail page.
-7. Сделать cart и basic cash checkout flow.
-8. Добавить authentication.
-9. Сделать admin panel.
+- Home page
+- Shop page с search/filter/sorting
+- Product detail pages
+- Add to cart
+- Cart with quantity update/remove/total
+- Checkout with cash order flow
+- Order confirmation
+- Orders saved in server SQLite database
+- Admin dashboard with database orders and basic analytics
+- Account placeholder
+- About/contact/legal pages
+- Production build passes
 
-## Current conclusion
+## Что нужно сделать дальше
 
-Главный текущий блокер - отсутствие database layer. После Prisma + PostgreSQL setup можно начинать строить catalog, cart, checkout, customer profile и admin panel на real data.
+1. Добавить Auth.js/NextAuth.
+2. Защитить `/admin`.
+3. Сделать real product/category/order CRUD.
+4. Добавить upload images.
+5. Выбрать online payment provider.
+6. Позже перенести SQLite на Supabase/Neon PostgreSQL для production.
+7. Провести browser QA и responsive QA.
