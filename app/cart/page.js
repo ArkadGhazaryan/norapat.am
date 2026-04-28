@@ -1,12 +1,33 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/components/cart/CartProvider";
 import { formatPrice } from "@/lib/format";
 
 export default function CartPage() {
   const { items, total, updateQuantity, removeItem } = useCart();
+  const [promoCode, setPromoCode] = useState("");
+  const [discount, setDiscount] = useState(0);
+  const [message, setMessage] = useState("");
   const delivery = items.length ? 700 : 0;
+
+  async function applyPromo() {
+    setMessage("");
+    setDiscount(0);
+    const response = await fetch("/api/promos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code: promoCode, subtotal: total }),
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      setMessage(result.error || "Промокод не применен");
+      return;
+    }
+    setDiscount(result.discount);
+    setMessage(`Скидка применена: -${formatPrice(result.discount)}`);
+  }
 
   return (
     <main className="page-shell">
@@ -48,8 +69,17 @@ export default function CartPage() {
           <aside className="summary-card">
             <h2>Итого</h2>
             <div className="summary-line"><span>Товары</span><strong>{formatPrice(total)}</strong></div>
+            <label className="summary-promo">
+              Промокод
+              <span className="input-with-button">
+                <input value={promoCode} onChange={(event) => setPromoCode(event.target.value)} placeholder="WELCOME10" />
+                <button className="secondary-button" type="button" onClick={applyPromo}>OK</button>
+              </span>
+            </label>
+            {message ? <p className={discount ? "form-success" : "form-error"}>{message}</p> : null}
+            {discount ? <div className="summary-line"><span>Скидка</span><strong>-{formatPrice(discount)}</strong></div> : null}
             <div className="summary-line"><span>Доставка</span><strong>{formatPrice(delivery)}</strong></div>
-            <div className="summary-line"><span>К оплате</span><strong>{formatPrice(total + delivery)}</strong></div>
+            <div className="summary-line"><span>К оплате</span><strong>{formatPrice(total - discount + delivery)}</strong></div>
             <Link className="primary-button" href="/checkout">Оформить заказ</Link>
           </aside>
         </div>

@@ -1,5 +1,7 @@
 "use server";
 
+import fs from "node:fs/promises";
+import path from "node:path";
 import { redirect } from "next/navigation";
 import { clearAdminSession, requireAdmin } from "@/lib/auth";
 import { deleteCategory, deleteProduct, upsertCategory, upsertProduct } from "@/lib/products";
@@ -17,6 +19,17 @@ export async function logoutAdmin() {
 
 export async function saveProduct(formData) {
   await requireAdmin();
+  let imageUrl = formData.get("imageUrl");
+  const imageFile = formData.get("imageFile");
+  if (imageFile && imageFile.size > 0) {
+    const uploadDir = path.join(process.cwd(), "public", "uploads");
+    await fs.mkdir(uploadDir, { recursive: true });
+    const extension = path.extname(imageFile.name || "upload.jpg") || ".jpg";
+    const filename = `product-${Date.now()}${extension}`;
+    const buffer = Buffer.from(await imageFile.arrayBuffer());
+    await fs.writeFile(path.join(uploadDir, filename), buffer);
+    imageUrl = `/uploads/${filename}`;
+  }
   upsertProduct({
     id: formData.get("id") || undefined,
     categoryId: formData.get("categoryId"),
@@ -26,7 +39,7 @@ export async function saveProduct(formData) {
     description: formData.get("description"),
     price: formData.get("price"),
     oldPrice: formData.get("oldPrice"),
-    imageUrl: formData.get("imageUrl"),
+    imageUrl,
     stockQuantity: formData.get("stockQuantity"),
     isAvailable: checkbox(formData, "isAvailable"),
     isFeatured: checkbox(formData, "isFeatured"),

@@ -1,4 +1,5 @@
-import { getCategories, getProducts } from "@/lib/products";
+import Link from "next/link";
+import { countProducts, getCategories, getProducts } from "@/lib/products";
 import { ProductCard } from "@/components/shop/ProductCard";
 
 export default async function ShopPage({ searchParams }) {
@@ -6,8 +7,13 @@ export default async function ShopPage({ searchParams }) {
   const query = (params.q ?? "").toLowerCase();
   const category = params.category ?? "all";
   const sort = params.sort ?? "popular";
+  const availability = params.availability ?? "all";
+  const page = Math.max(1, Number(params.page ?? 1));
   const categories = getCategories();
-  const filtered = getProducts({ category, q: query, sort });
+  const pageSize = 6;
+  const filtered = getProducts({ category, q: query, sort, availability, page, pageSize });
+  const total = countProducts({ category, q: query, availability });
+  const pageCount = Math.max(1, Math.ceil(total / pageSize));
 
   return (
     <main className="page-shell">
@@ -45,17 +51,36 @@ export default async function ShopPage({ searchParams }) {
               <option value="price-desc">Цена по убыванию</option>
             </select>
           </label>
+          <label>
+            Наличие
+            <select name="availability" defaultValue={availability}>
+              <option value="all">Все товары</option>
+              <option value="in-stock">В наличии</option>
+              <option value="out-of-stock">Нет в наличии</option>
+            </select>
+          </label>
           <button className="primary-button" type="submit">Применить</button>
         </form>
 
         <div>
           <div className="section-heading">
-            <p>{filtered.length} товаров найдено</p>
+            <p>{total} товаров найдено</p>
           </div>
           <div className="product-grid">
             {filtered.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
+          </div>
+          <div className="pagination">
+            {Array.from({ length: pageCount }, (_, index) => {
+              const pageNumber = index + 1;
+              const href = `/shop?category=${category}&q=${encodeURIComponent(query)}&sort=${sort}&availability=${availability}&page=${pageNumber}`;
+              return (
+                <Link className={pageNumber === page ? "active-page" : ""} href={href} key={pageNumber}>
+                  {pageNumber}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

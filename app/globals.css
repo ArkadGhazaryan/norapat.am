@@ -534,6 +534,56 @@ h3 {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
+.analytics-grid,
+.account-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.plain-list {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.pagination a {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-weight: 800;
+  padding: 10px 14px;
+}
+
+.pagination .active-page {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.summary-promo {
+  color: #d8dfda;
+  display: grid;
+  font-weight: 700;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.summary-promo input {
+  border: 0;
+  border-radius: 8px;
+  min-height: 42px;
+  padding: 10px 12px;
+}
+
 .admin-heading {
   align-items: start;
   display: flex;

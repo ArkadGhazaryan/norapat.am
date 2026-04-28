@@ -10,7 +10,8 @@
     "db:init": "node scripts/init-db.js",
     "lint": "node scripts/check-project.js",
     "test": "node scripts/check-project.js",
-    "check": "npm run lint && npm run build"
+    "check": "npm run lint && npm run build",
+    "qa": "node scripts/qa.js"
   },
   "keywords": [],
   "author": "",

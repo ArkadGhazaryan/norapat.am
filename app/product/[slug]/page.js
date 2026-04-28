@@ -4,6 +4,7 @@ import { getProductBySlug, getProductSlugs, getRelatedProducts } from "@/lib/pro
 import { formatPrice } from "@/lib/format";
 import { AddToCartButton } from "@/components/shop/AddToCartButton";
 import { ProductCard } from "@/components/shop/ProductCard";
+import { WishlistButton } from "@/components/shop/WishlistButton";
 
 export function generateStaticParams() {
   return getProductSlugs().map((product) => ({ slug: product.slug }));
@@ -35,6 +36,7 @@ export default async function ProductPage({ params }) {
           <p>Статус: {product.stockQuantity > 0 ? `В наличии (${product.stockQuantity})` : "Нет в наличии"}</p>
           <div className="hero-actions">
             <AddToCartButton product={product} label="Добавить в корзину" />
+            <WishlistButton productId={product.id} redirectTo={`/product/${product.slug}`} />
             <Link className="secondary-button" href="/cart">Перейти в корзину</Link>
           </div>
         </div>

@@ -2,6 +2,8 @@ import { requireAdmin } from "@/lib/auth";
 import { getOrders } from "@/lib/orders";
 import { getAllCategories, getProducts } from "@/lib/products";
 import { getPromoCodes } from "@/lib/promos";
+import { getAnalytics } from "@/lib/analytics";
+import { getUsers } from "@/lib/users";
 import { formatPrice } from "@/lib/format";
 import {
   changeOrderStatus,
@@ -23,6 +25,8 @@ export default async function AdminPage() {
   const categories = getAllCategories();
   const orders = getOrders();
   const promos = getPromoCodes();
+  const users = getUsers();
+  const analytics = getAnalytics();
   const revenue = orders.reduce((sum, order) => sum + Number(order.total || 0), 0);
 
   return (
@@ -43,6 +47,25 @@ export default async function AdminPage() {
         <div className="stat-card"><span>Заказы</span><strong>{orders.length}</strong></div>
         <div className="stat-card"><span>Выручка</span><strong>{formatPrice(revenue)}</strong></div>
         <div className="stat-card"><span>Средний чек</span><strong>{formatPrice(orders.length ? revenue / orders.length : 0)}</strong></div>
+        <div className="stat-card"><span>Клиенты</span><strong>{users.length}</strong></div>
+      </section>
+
+      <section className="section admin-section">
+        <div className="section-heading">
+          <p className="eyebrow">Аналитика</p>
+          <h2>Продажи и клиенты</h2>
+        </div>
+        <div className="stats-grid">
+          <div className="stat-card"><span>Сегодня</span><strong>{formatPrice(analytics.today.revenue)}</strong><p>{analytics.today.count} заказов</p></div>
+          <div className="stat-card"><span>7 дней</span><strong>{formatPrice(analytics.week.revenue)}</strong><p>{analytics.week.count} заказов</p></div>
+          <div className="stat-card"><span>30 дней</span><strong>{formatPrice(analytics.month.revenue)}</strong><p>{analytics.month.count} заказов</p></div>
+        </div>
+        <div className="analytics-grid">
+          <AnalyticsList title="Заказы по статусам" items={analytics.ordersByStatus.map((item) => `${item.status}: ${item.count}`)} />
+          <AnalyticsList title="Топ товаров" items={analytics.topProducts.map((item) => `${item.name}: ${item.quantity}`)} />
+          <AnalyticsList title="Меньше всего продаж" items={analytics.leastProducts.map((item) => `${item.name}: ${item.quantity}`)} />
+          <AnalyticsList title="Топ клиенты" items={analytics.customers.map((item) => `${item.name} ${item.phone}: ${formatPrice(item.spend)}`)} />
+        </div>
       </section>
 
       <section className="section admin-section">
@@ -51,6 +74,23 @@ export default async function AdminPage() {
           <h2>Добавить товар</h2>
         </div>
         <ProductForm categories={categories} />
+      </section>
+
+      <section className="section admin-section">
+        <div className="section-heading">
+          <p className="eyebrow">Клиенты</p>
+          <h2>Customer list</h2>
+        </div>
+        <div className="admin-table">
+          {users.map((user) => (
+            <article className="admin-row" key={user.id}>
+              <div>
+                <h3>{user.name}</h3>
+                <p>{user.phone} {user.email ? `- ${user.email}` : ""}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="section admin-section">
@@ -170,6 +210,21 @@ export default async function AdminPage() {
   );
 }
 
+function AnalyticsList({ title, items }) {
+  return (
+    <div className="info-panel">
+      <h3>{title}</h3>
+      {items.length ? (
+        <ul className="plain-list">
+          {items.map((item) => <li key={item}>{item}</li>)}
+        </ul>
+      ) : (
+        <p>Данных пока нет</p>
+      )}
+    </div>
+  );
+}
+
 function ProductForm({ product, categories, compact = false }) {
   return (
     <details className={compact ? "edit-details" : ""} open={!compact}>
@@ -206,7 +261,11 @@ function ProductForm({ product, categories, compact = false }) {
         </label>
         <label>
           Image URL
-          <input name="imageUrl" required defaultValue={product?.imageUrl ?? ""} />
+          <input name="imageUrl" defaultValue={product?.imageUrl ?? ""} />
+        </label>
+        <label>
+          Загрузить фото
+          <input name="imageFile" type="file" accept="image/*" />
         </label>
         <label>
           Short description

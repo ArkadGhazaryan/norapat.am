@@ -119,7 +119,7 @@ export default function CheckoutPage() {
               Способ оплаты
               <select name="payment" defaultValue="cash">
                 <option value="cash">Наличными при получении</option>
-                <option value="card" disabled>Онлайн-оплата будет добавлена позже</option>
+                <option value="card">Симулированная онлайн-оплата</option>
               </select>
             </label>
             <label>
