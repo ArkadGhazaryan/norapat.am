@@ -307,6 +307,21 @@ h3 {
   padding: 12px;
 }
 
+.form-success {
+  background: #dff1e7;
+  border-radius: 8px;
+  color: #20573b;
+  font-weight: 700;
+  margin: 0;
+  padding: 12px;
+}
+
+.input-with-button {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
 .product-grid {
   display: grid;
   gap: 18px;
@@ -479,6 +494,107 @@ h3 {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
+.admin-heading {
+  align-items: start;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+}
+
+.admin-section {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.admin-table {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-row {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  padding: 14px;
+}
+
+.admin-row img {
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  object-fit: cover;
+  width: 72px;
+}
+
+.product-form {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.inline-form {
+  align-items: end;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-bottom: 16px;
+}
+
+.checkbox-label {
+  align-items: center;
+  color: var(--foreground);
+  display: flex;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 8px;
+}
+
+.checkbox-label input {
+  min-height: auto;
+}
+
+.check-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.edit-details {
+  max-width: 560px;
+}
+
+.edit-details summary {
+  color: var(--green);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.status-form {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.status-form select {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: 42px;
+  padding: 8px 10px;
+}
+
+.auth-page {
+  display: grid;
+  min-height: 70vh;
+  place-items: center;
+}
+
+.auth-form {
+  max-width: 460px;
+  width: 100%;
+}
+
+.account-search {
+  max-width: 520px;
+}
+
 .stat-card strong {
   display: block;
   font-size: 28px;
@@ -522,6 +638,14 @@ h3 {
 
   .cart-item {
     grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .admin-heading,
+  .admin-row,
+  .status-form {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 
   .cart-item .action-row {

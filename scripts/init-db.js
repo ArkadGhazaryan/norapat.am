@@ -71,6 +71,19 @@ db.exec(`
     FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES products(id)
   );
+
+  CREATE TABLE IF NOT EXISTS promo_codes (
+    id TEXT PRIMARY KEY,
+    code TEXT NOT NULL UNIQUE,
+    type TEXT NOT NULL DEFAULT 'fixed',
+    value INTEGER NOT NULL,
+    min_order_amount INTEGER NOT NULL DEFAULT 0,
+    is_active INTEGER NOT NULL DEFAULT 1,
+    used_count INTEGER NOT NULL DEFAULT 0,
+    max_uses INTEGER,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );
 `);
 
 const categories = [
@@ -128,6 +141,14 @@ for (const product of products) {
 const productCount = db.prepare("SELECT COUNT(*) AS count FROM products").get().count;
 const categoryCount = db.prepare("SELECT COUNT(*) AS count FROM categories").get().count;
 
+db.prepare(
+  `INSERT INTO promo_codes (id, code, type, value, min_order_amount, is_active, max_uses)
+   VALUES ('promo_welcome', 'WELCOME10', 'percent', 10, 3000, 1, 100)
+   ON CONFLICT(code) DO UPDATE SET value = excluded.value, min_order_amount = excluded.min_order_amount`
+).run();
+
+const promoCount = db.prepare("SELECT COUNT(*) AS count FROM promo_codes").get().count;
+
 db.close();
 
-console.log(`Database ready: ${categoryCount} categories, ${productCount} products`);
+console.log(`Database ready: ${categoryCount} categories, ${productCount} products, ${promoCount} promo codes`);

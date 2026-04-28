@@ -29,6 +29,7 @@ export async function POST(request) {
       customerEmail: body.customerEmail,
       deliveryAddress: body.deliveryAddress,
       paymentMethod: body.paymentMethod || "cash",
+      promoCode: body.promoCode,
       items: body.items,
     });
 

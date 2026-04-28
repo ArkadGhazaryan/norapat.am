@@ -603,7 +603,8 @@ UPLOAD_SECRET=
 - React - UI
 - PostgreSQL - database
 - Prisma - ORM и migrations
-- Auth.js/NextAuth - authentication
+- Current admin auth - password + httpOnly cookie in `lib/auth.js`
+- Auth.js/NextAuth - recommended later for full customer authentication
 - Zod - validation
 - bcrypt - password hashing
 - lucide-react - icons

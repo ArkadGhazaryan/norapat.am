@@ -2,9 +2,9 @@
 
 ## Общий статус проекта
 
-Общий progress реализации проекта на данный момент: `58%`.
+Общий progress реализации проекта на данный момент: `78%`.
 
-Сайт уже работает как MVP: есть home page, shop, product detail, cart, checkout, server API, local SQLite database, admin dashboard, account draft и static/legal pages. Real authentication, full admin CRUD, online payment и image upload еще не подключены.
+Сайт уже работает как functional local shop: есть home page, shop, product detail, cart, checkout, server API, local SQLite database, protected admin panel, product/category CRUD, order status management, promo codes, customer order lookup и static/legal pages. Online payment, real file upload, full customer registration и production deployment еще не подключены.
 
 ## Общая статистика по epic-ам
 
@@ -15,13 +15,13 @@
 | EPIC 03 - Requirements document | 70% | 2 / 7 | Draft exists |
 | EPIC 04 - Architecture document | 100% | 8 / 8 | Done |
 | EPIC 05 - Database | 65% | 7 / 11 | Local SQLite done |
-| EPIC 06 - Authentication | 5% | 1 / 10 | Placeholder only |
+| EPIC 06 - Authentication | 55% | 6 / 10 | Admin auth done |
 | EPIC 07 - Public shop | 85% | 9 / 11 | MVP done |
 | EPIC 08 - Cart | 85% | 7 / 8 | LocalStorage MVP |
-| EPIC 09 - Checkout | 85% | 8 / 10 | Server order MVP |
-| EPIC 10 - Customer profile | 25% | 2 / 8 | Draft page |
-| EPIC 11 - Admin panel | 55% | 6 / 12 | DB dashboard MVP |
-| EPIC 12 - Analytics | 50% | 4 / 9 | Basic DB analytics |
+| EPIC 09 - Checkout | 90% | 9 / 10 | Server order + promo |
+| EPIC 10 - Customer profile | 45% | 4 / 8 | Order lookup done |
+| EPIC 11 - Admin panel | 85% | 10 / 12 | CRUD/admin protection done |
+| EPIC 12 - Analytics | 55% | 5 / 9 | Basic DB analytics |
 | EPIC 13 - Static/legal pages | 80% | 7 / 9 | Draft pages |
 | EPIC 14 - Testing and deployment | 45% | 4 / 9 | Build passed |
 
@@ -95,20 +95,20 @@
 | Подключить production PostgreSQL | 0% | Not started | Supabase/Neon позже |
 | Добавить migration workflow | 0% | Not started | Сейчас init script, не migration system |
 
-## EPIC 06 - Authentication | Epic progress: 5% | Tasks: 1 / 10 done
+## EPIC 06 - Authentication | Epic progress: 55% | Tasks: 6 / 10 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Создать account placeholder | 100% | Done | `/account` page есть |
-| Выбрать auth solution | 0% | Not started | Auth.js/NextAuth recommended |
-| Установить auth dependencies | 0% | Not started | Нет |
-| Настроить user model | 0% | Not started | Database нет |
-| Добавить password hashing | 0% | Not started | Нет |
-| Создать registration flow | 0% | Not started | Нет |
-| Создать login flow | 0% | Not started | Нет |
-| Создать logout flow | 0% | Not started | Нет |
-| Защитить account pages | 0% | Not started | Нет |
-| Защитить admin pages по role | 0% | Not started | Нет |
+| Создать account page | 100% | Done | `/account` page есть |
+| Создать admin login | 100% | Done | `/admin/login` |
+| Создать admin session cookie | 100% | Done | `lib/auth.js` |
+| Создать logout flow | 100% | Done | Admin logout |
+| Защитить admin pages | 100% | Done | `requireAdmin()` |
+| Добавить admin password env | 100% | Done | `ADMIN_PASSWORD` |
+| Создать customer registration | 0% | Not started | Нет user accounts |
+| Создать customer login | 0% | Not started | Нет |
+| Добавить password hashing | 0% | Not started | Для future customer auth |
+| Защитить customer profile | 0% | Not started | Сейчас lookup по телефону |
 
 ## EPIC 07 - Public shop | Epic progress: 85% | Tasks: 9 / 11 done
 
@@ -118,7 +118,7 @@
 | Создать `/product/[slug]` page | 100% | Done | SSG pages работают |
 | Создать product card component | 100% | Done | `ProductCard` |
 | Создать product grid | 100% | Done | Grid есть |
-| Подключить products | 80% | Done | Mock data вместо database |
+| Подключить products | 100% | Done | Products from SQLite database |
 | Добавить category filter | 100% | Done | Query filter |
 | Добавить search | 100% | Done | Query search |
 | Добавить sorting by price | 100% | Done | ASC/DESC |
@@ -139,7 +139,7 @@
 | Показать subtotal/total | 100% | Done | Delivery + total |
 | Добавить promo code apply | 0% | Not started | Нет promo logic |
 
-## EPIC 09 - Checkout | Epic progress: 85% | Tasks: 8 / 10 done
+## EPIC 09 - Checkout | Epic progress: 90% | Tasks: 9 / 10 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
@@ -152,23 +152,24 @@
 | Добавить cash payment | 100% | Done | Cash selected |
 | Добавить order confirmation | 100% | Done | Shows order number |
 | Проверять cart server-side | 80% | Done | API пересчитывает цены по database |
+| Добавить promo code apply | 100% | Done | `WELCOME10`, `/api/promos` |
 | Online payment provider | 0% | Not started | Не выбран |
-| Email/SMS notification | 0% | Not started | Нет |
 
-## EPIC 10 - Customer profile | Epic progress: 25% | Tasks: 2 / 8 done
+## EPIC 10 - Customer profile | Epic progress: 45% | Tasks: 4 / 8 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
 | Создать `/account` page | 100% | Done | Route есть |
-| Показать profile/account placeholder | 100% | Done | Draft page |
-| Создать `/account/orders` page | 0% | Not started | Нет |
-| Показать real profile data | 0% | Not started | Auth/database нет |
+| Показать order lookup по телефону | 100% | Done | `/account?phone=...` |
+| Показать order history | 100% | Done | Orders from database |
+| Создать `/account/orders` page | 0% | Not started | Используется same account page |
+| Показать real profile data | 0% | Not started | Customer auth нет |
 | Добавить profile edit | 0% | Not started | Нет |
 | Добавить saved addresses | 0% | Not started | Нет |
-| Добавить order history | 0% | Not started | Нет |
+| Добавить order detail | 0% | Not started | Нет отдельной страницы |
 | Добавить wishlist | 0% | Not started | Нет |
 
-## EPIC 11 - Admin panel | Epic progress: 55% | Tasks: 6 / 12 done
+## EPIC 11 - Admin panel | Epic progress: 85% | Tasks: 10 / 12 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
@@ -178,15 +179,15 @@
 | Показать database orders | 100% | Done | Orders from SQLite |
 | Показать basic revenue stats | 100% | Done | Revenue/average check from DB |
 | Создать orders API | 100% | Done | GET/POST `/api/orders` |
-| Защитить admin route | 0% | Not started | Auth нет |
-| Product create/edit/delete | 0% | Not started | CRUD нет |
-| Product image upload | 0% | Not started | Upload provider нет |
-| Categories CRUD | 0% | Not started | Нет |
-| Order status update | 0% | Not started | Нет |
-| Promo code management | 0% | Not started | Нет |
-| Customer list | 0% | Not started | Нет |
+| Защитить admin route | 100% | Done | Admin login required |
+| Product create/edit/delete | 100% | Done | Add/edit/hide product |
+| Categories CRUD | 100% | Done | Add/delete categories |
+| Order status update | 100% | Done | Status select |
+| Promo code management | 100% | Done | Add/delete promo codes |
+| Product image upload | 30% | Partial | Image URL works, file upload нет |
+| Customer list | 0% | Not started | Нет registered customers |
 
-## EPIC 12 - Analytics | Epic progress: 50% | Tasks: 4 / 9 done
+## EPIC 12 - Analytics | Epic progress: 55% | Tasks: 5 / 9 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
@@ -194,7 +195,7 @@
 | Считать total orders | 100% | Done | Database orders |
 | Считать total revenue | 100% | Done | Database orders |
 | Считать average order value | 100% | Done | Database orders |
-| Orders by status | 0% | Not started | Нет chart/table |
+| Orders by status | 50% | Partial | Status stored and editable |
 | Today/week/month filters | 0% | Not started | Нет date filters |
 | Top 5 products | 0% | Not started | Нет query |
 | Least-selling products | 0% | Not started | Нет query |
@@ -240,16 +241,14 @@
 - Order confirmation
 - Orders saved in server SQLite database
 - Admin dashboard with database orders and basic analytics
-- Account placeholder
+- Customer account order lookup by phone
 - About/contact/legal pages
 - Production build passes
 
 ## Что нужно сделать дальше
 
-1. Добавить Auth.js/NextAuth.
-2. Защитить `/admin`.
-3. Сделать real product/category/order CRUD.
-4. Добавить upload images.
-5. Выбрать online payment provider.
-6. Позже перенести SQLite на Supabase/Neon PostgreSQL для production.
-7. Провести browser QA и responsive QA.
+1. Добавить real file upload для images.
+2. Выбрать online payment provider.
+3. Добавить customer registration/login, если нужен личный кабинет с паролем.
+4. Позже перенести SQLite на Supabase/Neon PostgreSQL для production.
+5. Провести browser QA и responsive QA.
