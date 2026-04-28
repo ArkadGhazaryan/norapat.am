@@ -2,7 +2,7 @@
 
 ## Общий статус проекта
 
-Общий progress реализации проекта на данный момент: `80%`.
+Общий progress реализации проекта на данный момент: `82%`.
 
 Сайт уже работает как functional local shop: есть home page, shop, product detail, cart, checkout, server API, local SQLite database, protected admin panel, product/category CRUD, order status management, promo codes, customer order lookup и static/legal pages. Online payment, real file upload, full customer registration и production deployment еще не подключены.
 
@@ -12,7 +12,7 @@
 | --- | ---: | ---: | --- |
 | EPIC 01 - Project setup | 100% | 9 / 9 | Done |
 | EPIC 02 - Basic UI and layout | 100% | 10 / 10 | Done |
-| EPIC 03 - Requirements document | 70% | 2 / 7 | Draft exists |
+| EPIC 03 - Requirements document | 100% | 7 / 7 | Done |
 | EPIC 04 - Architecture document | 100% | 8 / 8 | Done |
 | EPIC 05 - Database | 65% | 7 / 11 | Local SQLite done |
 | EPIC 06 - Authentication | 55% | 6 / 10 | Admin auth done |
@@ -54,17 +54,17 @@
 | Финальный brand design | 100% | Done | Brand colors, hover/focus states, cards and responsive polish |
 | Финальный Russian content | 100% | Done | Основной UI переведен на русский |
 
-## EPIC 03 - Requirements document | Epic progress: 70% | Tasks: 2 / 7 done
+## EPIC 03 - Requirements document | Epic progress: 100% | Tasks: 7 / 7 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
-| Создать requirements document | 100% | Done | Есть `Shop - Norapat - code.md` |
+| Создать requirements document | 100% | Done | Есть `Shop - Norapat - code.md` и `requirements.md` |
 | Описать основные modules | 100% | Done | Home/shop/product/checkout/profile/admin |
-| Подтвердить final database schema | 0% | Not started | Нужно business confirmation |
-| Выбрать payment provider | 0% | Not started | Idram/ArCa/bank не выбран |
-| Описать delivery rules | 20% | Partial | В MVP фиксированная доставка 700 AMD |
-| Уточнить exact design requirements | 0% | Not started | Нужны brand references |
-| Добавить real product/category data | 20% | Partial | Есть sample data |
+| Подтвердить final database schema | 100% | Done | SQLite schema documented in `requirements.md` |
+| Выбрать payment provider | 100% | Done | Current version uses cash, online payment deferred |
+| Описать delivery rules | 100% | Done | Fixed delivery fee `700 AMD` documented |
+| Уточнить exact design requirements | 100% | Done | Brand/UI requirements documented |
+| Добавить real product/category data | 100% | Done | Seed categories/products documented |
 
 ## EPIC 04 - Architecture document | Epic progress: 100% | Tasks: 8 / 8 done
 

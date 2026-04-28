@@ -13,6 +13,7 @@ const requiredPaths = [
   "lib/orders.js",
   "lib/products.js",
   "scripts/init-db.js",
+  "requirements.md",
   ".env.example",
   "jsconfig.json",
 ];
