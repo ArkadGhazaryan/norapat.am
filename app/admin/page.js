@@ -29,7 +29,7 @@ export default async function AdminPage() {
     <main className="page-shell">
       <div className="page-heading admin-heading">
         <div>
-          <p className="eyebrow">Admin</p>
+          <p className="eyebrow">Админ</p>
           <h1>Панель управления</h1>
           <p className="intro">Управление товарами, категориями, заказами и промокодами.</p>
         </div>
@@ -47,7 +47,7 @@ export default async function AdminPage() {
 
       <section className="section admin-section">
         <div className="section-heading">
-          <p className="eyebrow">Products</p>
+          <p className="eyebrow">Товары</p>
           <h2>Добавить товар</h2>
         </div>
         <ProductForm categories={categories} />
@@ -55,7 +55,7 @@ export default async function AdminPage() {
 
       <section className="section admin-section">
         <div className="section-heading">
-          <p className="eyebrow">Catalog</p>
+          <p className="eyebrow">Каталог</p>
           <h2>Товары</h2>
         </div>
         <div className="admin-table">
@@ -106,7 +106,7 @@ export default async function AdminPage() {
 
       <section className="section admin-section">
         <div className="section-heading">
-          <p className="eyebrow">Orders</p>
+          <p className="eyebrow">Заказы</p>
           <h2>Заказы</h2>
         </div>
         <div className="admin-table">
@@ -136,7 +136,7 @@ export default async function AdminPage() {
 
       <section className="section admin-section">
         <div className="section-heading">
-          <p className="eyebrow">Promo</p>
+          <p className="eyebrow">Промокоды</p>
           <h2>Промокоды</h2>
         </div>
         <form className="form-grid inline-form" action={savePromo}>
@@ -218,8 +218,8 @@ function ProductForm({ product, categories, compact = false }) {
         </label>
         <div className="check-grid">
           <label className="checkbox-label"><input name="isAvailable" type="checkbox" defaultChecked={product?.isAvailable ?? true} /> Доступен</label>
-          <label className="checkbox-label"><input name="isFeatured" type="checkbox" defaultChecked={product?.isFeatured ?? false} /> Featured</label>
-          <label className="checkbox-label"><input name="isPopular" type="checkbox" defaultChecked={product?.isPopular ?? false} /> Popular</label>
+          <label className="checkbox-label"><input name="isFeatured" type="checkbox" defaultChecked={product?.isFeatured ?? false} /> Рекомендуемый</label>
+          <label className="checkbox-label"><input name="isPopular" type="checkbox" defaultChecked={product?.isPopular ?? false} /> Популярный</label>
         </div>
         <button className="primary-button" type="submit">{product ? "Сохранить" : "Добавить товар"}</button>
       </form>

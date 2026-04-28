@@ -21,7 +21,7 @@ export default async function AdminLoginPage({ searchParams }) {
   return (
     <main className="page-shell auth-page">
       <form className="form-grid auth-form" action={login}>
-        <p className="eyebrow">Admin login</p>
+        <p className="eyebrow">Админ</p>
         <h1>Вход в админ-панель</h1>
         {params.error ? <p className="form-error">Неверный пароль</p> : null}
         <label>

@@ -12,12 +12,12 @@ export function Header() {
         <span className="brand-mark">N</span>
         <span>
           <strong>Norapat</strong>
-          <small>Foodcourt shop</small>
+          <small>Фудкорт и доставка</small>
         </span>
       </Link>
       <nav className="main-nav" aria-label="Главная навигация">
         <Link href="/shop">Магазин</Link>
-        <Link href="/account">Аккаунт</Link>
+        <Link href="/account">Кабинет</Link>
         <Link href="/admin">Админ</Link>
         <Link className="cart-link" href="/cart">
           Корзина <span>{count}</span>

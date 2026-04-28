@@ -13,8 +13,8 @@ export default async function Home() {
           <p className="eyebrow">Norapat.am</p>
           <h1>Готовая еда, быстрый заказ и удобная доставка</h1>
           <p className="intro">
-            Рабочий MVP магазина: каталог, карточки товаров, корзина,
-            checkout, аккаунт и админ-панель для управления заказами.
+            Полноценный локальный магазин: каталог, карточки товаров, корзина,
+            оформление заказа, кабинет клиента и админ-панель для управления.
           </p>
           <div className="hero-actions">
             <Link className="primary-button" href="/shop">Открыть магазин</Link>

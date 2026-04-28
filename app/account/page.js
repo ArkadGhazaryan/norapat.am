@@ -9,7 +9,7 @@ export default async function AccountPage({ searchParams }) {
   return (
     <main className="page-shell">
       <div className="page-heading">
-        <p className="eyebrow">Account</p>
+        <p className="eyebrow">Кабинет</p>
         <h1>Кабинет клиента</h1>
         <p className="intro">
           Пока без регистрации: клиент может найти свои заказы по номеру телефона.
@@ -26,7 +26,7 @@ export default async function AccountPage({ searchParams }) {
 
       <section className="section">
         <div className="section-heading">
-          <p className="eyebrow">Orders</p>
+          <p className="eyebrow">Заказы</p>
           <h2>История заказов</h2>
         </div>
         <div className="admin-table">

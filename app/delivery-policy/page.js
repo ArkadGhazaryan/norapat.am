@@ -1,10 +1,10 @@
 export default function DeliveryPolicyPage() {
   return (
     <main className="page-shell">
-      <p className="eyebrow">Delivery</p>
-      <h1>Delivery Policy</h1>
+      <p className="eyebrow">Доставка</p>
+      <h1>Политика доставки</h1>
       <p className="intro">
-        Доставка в MVP считается фиксированной суммой 700 AMD. Реальные зоны и тарифы нужно уточнить.
+        Сейчас доставка считается фиксированной суммой 700 AMD. Реальные зоны и тарифы можно уточнить в админ-логике позже.
       </p>
     </main>
   );

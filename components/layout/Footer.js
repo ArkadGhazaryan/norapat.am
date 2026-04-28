@@ -5,15 +5,15 @@ export function Footer() {
     <footer className="site-footer">
       <div>
         <strong>Norapat.am</strong>
-        <p>Foodcourt e-commerce experience with delivery, checkout and admin tools.</p>
+        <p>Онлайн-заказ готовой еды с доставкой, корзиной, оплатой и управлением заказами.</p>
       </div>
-      <nav aria-label="Footer navigation">
+      <nav aria-label="Навигация в подвале">
         <Link href="/about">О нас</Link>
         <Link href="/contact">Контакты</Link>
         <Link href="/delivery-policy">Доставка</Link>
         <Link href="/refund-policy">Возврат</Link>
-        <Link href="/privacy-policy">Privacy</Link>
-        <Link href="/terms">Terms</Link>
+        <Link href="/privacy-policy">Конфиденциальность</Link>
+        <Link href="/terms">Условия</Link>
       </nav>
     </footer>
   );

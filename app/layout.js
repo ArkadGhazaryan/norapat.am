@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 
 export const metadata = {
   title: "Norapat Shop",
-  description: "Foodcourt e-commerce experience for Norapat.",
+  description: "Онлайн-магазин Norapat для заказа готовой еды и доставки.",
 };
 
 export default function RootLayout({ children }) {

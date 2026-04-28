@@ -34,6 +34,27 @@ a {
   text-decoration: none;
 }
 
+a,
+button,
+input,
+select,
+textarea,
+summary {
+  outline-color: transparent;
+  transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  box-shadow: 0 0 0 3px rgba(201, 55, 44, 0.22);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 button,
 input,
 select,
@@ -97,6 +118,11 @@ img {
 .site-footer a {
   color: var(--muted);
   font-weight: 700;
+}
+
+.main-nav a:hover,
+.site-footer a:hover {
+  color: var(--accent);
 }
 
 .cart-link {
@@ -200,12 +226,19 @@ h3 {
 
 .primary-button:hover {
   background: var(--accent-dark);
+  transform: translateY(-1px);
 }
 
 .secondary-button {
   background: var(--surface);
   border: 1px solid var(--line);
   color: var(--foreground);
+}
+
+.secondary-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
 }
 
 .danger-button {
@@ -333,6 +366,13 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.product-card:hover {
+  border-color: rgba(201, 55, 44, 0.35);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
 }
 
 .product-media {

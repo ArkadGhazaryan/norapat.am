@@ -2,7 +2,7 @@
 
 ## Общий статус проекта
 
-Общий progress реализации проекта на данный момент: `78%`.
+Общий progress реализации проекта на данный момент: `80%`.
 
 Сайт уже работает как functional local shop: есть home page, shop, product detail, cart, checkout, server API, local SQLite database, protected admin panel, product/category CRUD, order status management, promo codes, customer order lookup и static/legal pages. Online payment, real file upload, full customer registration и production deployment еще не подключены.
 
@@ -10,8 +10,8 @@
 
 | Epic | Progress | Tasks done | Status |
 | --- | ---: | ---: | --- |
-| EPIC 01 - Project setup | 90% | 8 / 9 | Mostly done |
-| EPIC 02 - Basic UI and layout | 80% | 8 / 10 | MVP done |
+| EPIC 01 - Project setup | 100% | 9 / 9 | Done |
+| EPIC 02 - Basic UI and layout | 100% | 10 / 10 | Done |
 | EPIC 03 - Requirements document | 70% | 2 / 7 | Draft exists |
 | EPIC 04 - Architecture document | 100% | 8 / 8 | Done |
 | EPIC 05 - Database | 65% | 7 / 11 | Local SQLite done |
@@ -25,7 +25,7 @@
 | EPIC 13 - Static/legal pages | 80% | 7 / 9 | Draft pages |
 | EPIC 14 - Testing and deployment | 45% | 4 / 9 | Build passed |
 
-## EPIC 01 - Project setup | Epic progress: 90% | Tasks: 8 / 9 done
+## EPIC 01 - Project setup | Epic progress: 100% | Tasks: 9 / 9 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
@@ -37,9 +37,9 @@
 | Создать `app/` structure | 100% | Done | Routes добавлены |
 | Добавить `jsconfig.json` | 100% | Done | `@/` imports работают |
 | Добавить `.env.example` | 100% | Done | Basic env keys добавлены |
-| Добавить lint/test scripts | 0% | Not started | Пока есть только build verification |
+| Добавить lint/test scripts | 100% | Done | `lint`, `test`, `check` scripts добавлены |
 
-## EPIC 02 - Basic UI and layout | Epic progress: 80% | Tasks: 8 / 10 done
+## EPIC 02 - Basic UI and layout | Epic progress: 100% | Tasks: 10 / 10 done
 
 | Task | Progress | Status | Notes |
 | --- | ---: | --- | --- |
@@ -48,11 +48,11 @@
 | Создать footer | 100% | Done | `components/layout/Footer.js` |
 | Сделать navigation | 100% | Done | Home/shop/account/admin/cart |
 | Сделать home page | 100% | Done | Hero, categories, popular products |
-| Добавить responsive styles | 90% | Done | Mobile grid/layout rules есть |
+| Добавить responsive styles | 100% | Done | Mobile grid/layout rules есть |
 | Добавить product visuals | 100% | Done | Product images используются |
-| Добавить reusable buttons/cards | 80% | Done | ProductCard/AddToCartButton |
-| Финальный brand design | 40% | Partial | MVP style есть, brand нужно уточнить |
-| Финальный Armenian/Russian content | 40% | Partial | Сейчас основной UI на русском |
+| Добавить reusable buttons/cards | 100% | Done | ProductCard/AddToCartButton/buttons/forms |
+| Финальный brand design | 100% | Done | Brand colors, hover/focus states, cards and responsive polish |
+| Финальный Russian content | 100% | Done | Основной UI переведен на русский |
 
 ## EPIC 03 - Requirements document | Epic progress: 70% | Tasks: 2 / 7 done
 

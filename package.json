@@ -7,7 +7,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "db:init": "node scripts/init-db.js"
+    "db:init": "node scripts/init-db.js",
+    "lint": "node scripts/check-project.js",
+    "test": "node scripts/check-project.js",
+    "check": "npm run lint && npm run build"
   },
   "keywords": [],
   "author": "",

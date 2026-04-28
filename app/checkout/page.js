@@ -87,7 +87,7 @@ export default function CheckoutPage() {
   return (
     <main className="page-shell">
       <div className="page-heading">
-        <p className="eyebrow">Checkout</p>
+        <p className="eyebrow">Оформление</p>
         <h1>Оформление заказа</h1>
       </div>
 
@@ -119,7 +119,7 @@ export default function CheckoutPage() {
               Способ оплаты
               <select name="payment" defaultValue="cash">
                 <option value="cash">Наличными при получении</option>
-                <option value="card" disabled>Online payment будет добавлен позже</option>
+                <option value="card" disabled>Онлайн-оплата будет добавлена позже</option>
               </select>
             </label>
             <label>
